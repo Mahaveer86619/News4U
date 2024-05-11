@@ -1,6 +1,6 @@
 name: news4u
 description: "News Just for you."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -11,17 +11,38 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Flutter icons
   cupertino_icons: ^1.0.6
-  # Icon
+  # App Icon
   flutter_launcher_icons: ^0.13.1
   # Google fonts
   google_fonts: ^4.0.3
+  # State management
+  flutter_bloc: ^8.1.5
+  # Compairing dart packages
+  equatable: ^2.0.5
+  # Service locator
+  get_it: ^7.7.0
+  # Date format
+  intl: ^0.19.0
+  # Database
+  floor: ^1.5.0
+  # Make requests to API
+  retrofit: ^4.1.0
+  # Manage life cycle of widgets
+  flutter_hooks: ^0.20.5
+  # For cacehed image
+  cached_network_image: ^3.3.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  retrofit_generator: ^8.1.0
+  floor_generator: ^1.5.0
+  build_runner: ^2.4.9
 
 flutter:
 
@@ -49,7 +70,7 @@ flutter:
 
 # APP ICON
 flutter_icons:
-  image_path: assets/logo/app_logo.png
+  image_path: assets/logo/news4u_logo.png
   android: "launcher_icon"
   ios: "AppIcon"
   remove_alpha_ios: true
