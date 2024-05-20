@@ -1,5 +1,5 @@
 const String newsApiBaseUrl = 'https://newsapi.org/v2';
-const String newsApiKey = '100725c94ef84e168a221b2637a907c0';
+const String newsApiKey = '100725c94ef84e168a221b2637a907c';
 
 // * For the Top Headlines
 const String countryQuery = 'in';
