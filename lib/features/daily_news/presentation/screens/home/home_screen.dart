@@ -7,6 +7,7 @@ import 'package:news4u/features/daily_news/presentation/widgets/news_articles.da
 import 'package:news4u/features/daily_news/presentation/widgets/top_headlines_tile.dart';
 
 import '../../../../../core/constants/constants.dart';
+import '../../widgets/category_selector.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,12 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int? _categorySelected;
+  String? _categorySelected;
 
   @override
   void initState() {
     super.initState();
-    _categorySelected = 0;
+    _categorySelected = "general";
   }
 
   @override
@@ -77,39 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
     const List<String> categories = newsCategoryList;
     return Column(
       children: [
-        // * Horizontal List
-        const SizedBox(
-          height: 200,
-          width: double.infinity,
-          child: Placeholder(),
-        ),
         // * Category list
-        const SizedBox(
-          height: 16,
-        ),
-        SizedBox(
-          height: 50.0, // Adjust height as needed
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              final category = categories[index];
-              final isSelected = _categorySelected == index;
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    _categorySelected = index;
-                  });
-                },
-                child: Center(
-                  child: buildCategoryItem(
-                    category,
-                    isSelected,
-                  ),
-                ),
-              ); // Replace with your category item builder function
-            },
-          ),
+        CategorySelector(
+          categories: categories,
+          onCategorySelected: (category) {
+            setState(() {
+              _categorySelected = category;
+            });
+          },
         ),
 
         // * Vertical List
@@ -140,21 +116,5 @@ class _HomeScreenState extends State<HomeScreen> {
       }
       return const SizedBox();
     });
-  }
-
-  Widget buildCategoryItem(String category, bool isSelected) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Text(
-        category,
-        style: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-          color: isSelected
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.onBackground,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-        ),
-      ),
-    );
   }
 }
